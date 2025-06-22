@@ -1,0 +1,241 @@
+/* About Page Styles */
+:root {
+  --primary-color: #d33b08;
+  --secondary-color: #b4320e;
+  --accent-color: #ff5722;
+  --light-bg: #f5f5f5;
+  --dark-bg: #212529;
+  --text-color: #333;
+  --light-text: #f8f9fa;
+  --transition-speed: 0.3s;
+}
+.custom-navbar {
+  background-color: skyblue; 
+}
+
+.custom-navbar .nav-link {
+  color: black; 
+}
+
+/* Base Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
+  overflow-x: hidden;
+}
+
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--light-text);
+  padding: 4rem 0;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  animation: rotate 120s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.8;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Content Section */
+.content-section {
+  padding: 3rem 0;
+  animation: fadeIn 1s ease-out 0.6s;
+  animation-fill-mode: both;
+}
+
+.about-content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.about-content p:first-of-type:first-letter {
+  font-size: 3rem;
+  line-height: 1;
+  float: left;
+  margin-right: 0.5rem;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Section dividers */
+.section-divider {
+  height: 3px;
+  width: 100px;
+  background: var(--accent-color);
+  margin: 2rem auto;
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  top: -3.5px;
+  left: -5px;
+  animation: slideDot 3s infinite alternate ease-in-out;
+}
+
+@keyframes slideDot {
+  from { left: -5px; }
+  to { left: 95px; }
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding: 3rem 0;
+  }
+  
+  .about-content {
+    padding: 1.5rem;
+  }
+  
+  .about-content p:first-of-type:first-letter {
+    font-size: 2.5rem;
+  }
+}
+
+/* Hover Effects */
+.highlight-box {
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.highlight-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-speed), transform var(--transition-speed);
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+}
